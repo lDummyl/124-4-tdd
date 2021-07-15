@@ -12,7 +12,7 @@ public class NewtonInterpolatorTest extends TestCase {
     @Test
     public void testGetY() {
         NewtonInterpolator ni = getNewInterpolator();
-        float x = 3;
+        float x = 3f;
         assertEquals(3f, ni.getY(x), 0.001f);
     }
 

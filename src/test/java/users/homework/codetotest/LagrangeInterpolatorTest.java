@@ -13,7 +13,7 @@ public class LagrangeInterpolatorTest {
     @Test
     public void getY_quadratic_function_1() {
         LagrangeInterpolator li = getLagrangeInterpolator();
-        float x = 3;
+        float x = 3f;
         assertEquals(3f, li.getY(x), 0.001f);
     }
 
