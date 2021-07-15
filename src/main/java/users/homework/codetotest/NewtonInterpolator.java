@@ -11,7 +11,7 @@ public class NewtonInterpolator implements Interpolator {
     private float proterm(int i, float value, float[] x) {
         float pro = 1;
         for (int j = 0; j < i; j++) {
-            pro = pro / (value - x[j]);
+            pro = pro * (value - x[j]);
         }
         return pro;
     }
