@@ -1,5 +1,11 @@
 package users.homework.codetotest;
 
+import lombok.*;
+
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@Setter
+@Getter
+@ToString
 public class Point {
 
 	float x;

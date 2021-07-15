@@ -1,28 +1,20 @@
 package users.homework.codetotest;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.io.IOException;
 
-public class NewtonInterpolatorTest extends TestCase {
+public class NewtonInterpolatorTest {
 
     @Test
-    public void testGetY() {
-        NewtonInterpolator ni = getNewInterpolator();
-        float x = 3f;
-        assertEquals(3f, ni.getY(x), 0.001f);
+    public void testValidPoints() throws IOException {
+        UniversalTest<NewtonInterpolator> universalTest = new UniversalTest<>(NewtonInterpolator::new);
+        universalTest.testValidPoints();
     }
 
-    private NewtonInterpolator getNewInterpolator() {
-        NewtonInterpolator newtonInterpolator = new NewtonInterpolator();
-        List<Point> points = Stream.of(new Point(0f, 0f),
-                new Point(1f, 1f),
-                new Point(2f, 2f))
-                .collect(Collectors.toList());
-        newtonInterpolator.setPoints(points);
-        return newtonInterpolator;
+    @Test
+    public void testInvalidPoints() throws IOException {
+        UniversalTest<NewtonInterpolator> universalTest = new UniversalTest<>(NewtonInterpolator::new);
+        universalTest.testInvalidPoints();
     }
 }
