@@ -60,7 +60,7 @@ public class NewtonInterpolator implements Interpolator {
 
         for (int i = 0; i < n; i++) {
 
-            xArr[i] = points.get(i).x;
+             xArr[i] = points.get(i).x;
             y[i][0] = points.get(i).y;
         }
 
