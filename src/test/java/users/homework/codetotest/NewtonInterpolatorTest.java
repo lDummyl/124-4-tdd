@@ -7,5 +7,5 @@ public class NewtonInterpolatorTest extends TestCase {
 
     @Test
     public void testGetY() {
-        }
+    }
 }

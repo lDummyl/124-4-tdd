@@ -8,5 +8,5 @@ public class LagrangeInterpolatorTest {
 
     @Test
     public void getY_quadratic_function_1() {
-      }
+    }
 }
