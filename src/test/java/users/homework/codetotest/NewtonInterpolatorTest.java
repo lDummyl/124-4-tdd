@@ -77,22 +77,22 @@ public class NewtonInterpolatorTest
                     0.005f);
         }
     }
-    // Этот тест ломает интерполяцию по формуле Ньютона, погрешность составляет порядка 10.
+
     @Test
     public void getY_sine_4th_order_function()
     {
         Interpolator interpolator = new NewtonInterpolator();
         List<Point> list = new ArrayList<>();
-        for(double i = 0; i <= 360; i += 30)
+        for(double i = 0; i <= 180; i += 15)
         {
             list.add(new Point((float) i, break_it_for_sure(i)));
         }
         interpolator.setPoints(list);
-        for(double i = 15; i <= 360; i += 30)
+        for(double i = 5; i <= 180; i += 15)
         {
             assertEquals(break_it_for_sure(i),
                     interpolator.getY((float) i),
-                    9f);
+                    0.01f);
         }
     }
 
