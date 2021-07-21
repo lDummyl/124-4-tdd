@@ -28,7 +28,7 @@ public class NewtonInterpolator implements Interpolator {
     // Function for applying Newton's
     // divided difference formula
     private float applyFormula(float value, float[] x,
-                       float[][] y, int n) {
+                               float[][] y, int n) {
         float sum = y[0][0];
 
         for (int i = 1; i < n; i++) {
@@ -77,6 +77,4 @@ public class NewtonInterpolator implements Interpolator {
         this.points = points;
 
     }
-
-
 }
