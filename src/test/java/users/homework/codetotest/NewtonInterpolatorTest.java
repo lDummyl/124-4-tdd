@@ -1,6 +1,6 @@
 package users.homework.codetotest;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,11 +9,11 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class NewtonInterpolatorTest {
-    private Interpolator interpolator;
+    private static Interpolator interpolator;
 
-    @Before
-    public void setUp() {
-        interpolator = new NewtonInterpolator();
+    @BeforeClass
+    public static void beforeClass() {
+        interpolator = new LagrangeInterpolator();
     }
 
     @Test
