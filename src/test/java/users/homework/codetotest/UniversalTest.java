@@ -44,6 +44,7 @@ public class UniversalTest<T extends Interpolator> {
 
     private T getInterpolator() {
         T interpolator = this.interpolator.get();
+        // три точки параболы - (-4, 16), (0, 0), (2,4)
         List<Point> points = Stream.of(new Point(-4f, 16f),
                 new Point(0f, 0f),
                 new Point(2f, 4f))
