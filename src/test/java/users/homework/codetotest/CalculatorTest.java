@@ -1,6 +1,5 @@
 package users.homework.codetotest;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -13,12 +12,7 @@ import static org.junit.Assert.*;
  * 21.07.2021
  */
 public class CalculatorTest {
-    private static Calculator calculator;
-
-    @BeforeClass
-    public static void beforeClass() {
-        calculator = new Calculator();
-    }
+    private static final Calculator calculator = new Calculator();
 
     @Test
     public void sum() {
