@@ -2,20 +2,6 @@ package users.homework.codetotest;
 
 public class Calculator {
 
-    public static void main(String[] args) {
-        int b = Integer.MIN_VALUE;
-        int a = 1;
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(a * b);
-        try {
-            System.out.println("mult " + mult(a, b));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
     public static int sum(int a, int b) {
         if ((a >>> 31 ^ b >>> 31) == 0) {
             if ((a >>> 31 ^ (a + b) >>> 31) == 1) {
