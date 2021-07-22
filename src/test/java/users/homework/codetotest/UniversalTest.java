@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+@SuppressWarnings("UnstableApiUsage")
 public class UniversalTest<T extends Interpolator> {
 
     private final Supplier<? extends T> interpolator;
