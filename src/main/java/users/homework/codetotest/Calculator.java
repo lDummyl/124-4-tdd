@@ -35,11 +35,11 @@ public class Calculator {
         b = (b ^ (b >> 31)) + (b >>> 31);
         if (check) {
             if (a > (Integer.MAX_VALUE / b) || b > (Integer.MAX_VALUE / a)) {
-                throw new RuntimeException("Overflow_check=true");
+                throw new RuntimeException("Overflow");
             }
         } else {
             if (-a < (Integer.MIN_VALUE / b) || -b < (Integer.MIN_VALUE / a)) {
-                throw new RuntimeException("Overflow_check=false");
+                throw new RuntimeException("Overflow");
             }
         }
         return a * b;
