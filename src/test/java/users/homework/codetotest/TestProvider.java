@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @SuppressWarnings("UnstableApiUsage")
-public class UniversalTest {
+public class TestProvider {
 
     private final Supplier<? extends Interpolator> interpolator;
     private final List<Point> invalidPoints;
@@ -23,7 +23,7 @@ public class UniversalTest {
 
     private final Float PRECISION = 0.001f;
 
-    public UniversalTest(Supplier<? extends Interpolator> interpolator) throws IOException {
+    public TestProvider(Supplier<? extends Interpolator> interpolator) throws IOException {
         this.interpolator = interpolator;
         ObjectMapper mapper = new ObjectMapper();
         CollectionType pointType = mapper.getTypeFactory()

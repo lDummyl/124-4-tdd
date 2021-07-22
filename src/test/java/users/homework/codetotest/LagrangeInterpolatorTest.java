@@ -8,13 +8,13 @@ public class LagrangeInterpolatorTest {
 
     @Test
     public void testValidPoints() throws IOException {
-        UniversalTest universalTest = new UniversalTest(LagrangeInterpolator::new);
-        universalTest.testValidPoints();
+        TestProvider test = new TestProvider(LagrangeInterpolator::new);
+        test.testValidPoints();
     }
 
     @Test
     public void testInvalidPoints() throws IOException {
-        UniversalTest universalTest = new UniversalTest(LagrangeInterpolator::new);
-        universalTest.testInvalidPoints();
+        TestProvider test = new TestProvider(LagrangeInterpolator::new);
+        test.testInvalidPoints();
     }
 }

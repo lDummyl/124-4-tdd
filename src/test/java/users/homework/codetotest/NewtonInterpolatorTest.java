@@ -8,13 +8,13 @@ public class NewtonInterpolatorTest {
 
     @Test
     public void testValidPoints() throws IOException {
-        UniversalTest universalTest = new UniversalTest(NewtonInterpolator::new);
-        universalTest.testValidPoints();
+        TestProvider testProvider = new TestProvider(NewtonInterpolator::new);
+        testProvider.testValidPoints();
     }
 
     @Test
     public void testInvalidPoints() throws IOException {
-        UniversalTest universalTest = new UniversalTest(NewtonInterpolator::new);
-        universalTest.testInvalidPoints();
+        TestProvider testProvider = new TestProvider(NewtonInterpolator::new);
+        testProvider.testInvalidPoints();
     }
 }
