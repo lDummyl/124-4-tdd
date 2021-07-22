@@ -1,11 +1,12 @@
 package users.homework.codetotest;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-public class NewtonInterpolatorTest extends TestCase {
+public class NewtonInterpolatorTest {
+    private final NewtonInterpolator interpolator = new NewtonInterpolator();
 
     @Test
     public void testGetY() {
+
         }
 }

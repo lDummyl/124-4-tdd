@@ -30,11 +30,21 @@ public class LagrangeInterpolator implements Interpolator {
 	private void readPointsFromConsole() {
 		System.out.print("Enter the number of terms n: ");
 		int n = myScanner.nextInt(); //Store the value in n
+		if (n <= 0) throw new IllegalArgumentException("Can't do!");
+
 		for (int count = 0; count < n; count++) //Start the loop for X
 		{
 			System.out.println("Enter point #" + count);
 			System.out.print("Enter the value for x" + count + ": ");
 			float x = myScanner.nextFloat();
+
+			if (count != 0) {
+				for (Point point : points) {
+					if (point.x == x)
+						throw new IllegalArgumentException("Nodes cannot have equal x values");
+				}
+			}
+
 			System.out.print("Enter the value for y" + count + ": ");
 			float y = myScanner.nextFloat();
 			points.add(new Point(x, y));
@@ -49,6 +59,8 @@ public class LagrangeInterpolator implements Interpolator {
 			float denominator = 1;
 
 			for (int count2 = 0; count2 < n; count2++) {
+				if ((count2 != count) && (points.get(count2).x == points.get(count).x))
+					throw new IllegalArgumentException("Nodes cannot have equal x values");
 				if (count2 != count) {
 					numerator = numerator * (x - points.get(count2).x);
 					denominator = denominator * (points.get(count).x - points.get(count2).x);

@@ -8,6 +8,10 @@ import java.util.List;
 public class NewtonInterpolator implements Interpolator {
     List<Point> points = new ArrayList<>();
 
+    public static void main(String[] args) {
+
+    }
+
     private float proterm(int i, float value, float[] x) {
         float pro = 1;
         for (int j = 0; j < i; j++) {
