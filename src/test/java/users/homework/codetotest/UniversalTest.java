@@ -15,15 +15,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @SuppressWarnings("UnstableApiUsage")
-public class UniversalTest<T extends Interpolator> {
+public class UniversalTest {
 
-    private final Supplier<? extends T> interpolator;
+    private final Supplier<? extends Interpolator> interpolator;
     private final List<Point> invalidPoints;
     private final List<Point> validPoints;
 
     private final Float PRECISION = 0.001f;
 
-    public UniversalTest(Supplier<? extends T> interpolator) throws IOException {
+    public UniversalTest(Supplier<? extends Interpolator> interpolator) throws IOException {
         this.interpolator = interpolator;
         ObjectMapper mapper = new ObjectMapper();
         CollectionType pointType = mapper.getTypeFactory()
@@ -35,17 +35,17 @@ public class UniversalTest<T extends Interpolator> {
     }
 
     public void testValidPoints() {
-        T interpolator = getInterpolator();
+        Interpolator interpolator = getInterpolator();
         this.validPoints.forEach(p -> assertEquals(p.y, interpolator.getY(p.x), PRECISION));
     }
 
     public void testInvalidPoints() {
-        T interpolator = getInterpolator();
+        Interpolator interpolator = getInterpolator();
         this.invalidPoints.forEach(p -> assertNotEquals(p.y, interpolator.getY(p.x), PRECISION));
     }
 
-    private T getInterpolator() {
-        T interpolator = this.interpolator.get();
+    private Interpolator getInterpolator() {
+        Interpolator interpolator = this.interpolator.get();
         // три точки параболы - (-4, 16), (0, 0), (2, 4)
         List<Point> points = Stream.of(new Point(-4f, 16f),
                 new Point(0f, 0f),
