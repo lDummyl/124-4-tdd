@@ -21,6 +21,8 @@ public class UniversalTest<T extends Interpolator> {
     private final List<Point> invalidPoints;
     private final List<Point> validPoints;
 
+    private final Float PRECISION = 0.001f;
+
     public UniversalTest(Supplier<? extends T> interpolator) throws IOException {
         this.interpolator = interpolator;
         ObjectMapper mapper = new ObjectMapper();
@@ -34,12 +36,12 @@ public class UniversalTest<T extends Interpolator> {
 
     public void testValidPoints() {
         T interpolator = getInterpolator();
-        this.validPoints.forEach(p -> assertEquals(p.y, interpolator.getY(p.x), 0.001f));
+        this.validPoints.forEach(p -> assertEquals(p.y, interpolator.getY(p.x), PRECISION));
     }
 
     public void testInvalidPoints() {
         T interpolator = getInterpolator();
-        this.invalidPoints.forEach(p -> assertNotEquals(p.y, interpolator.getY(p.x), 0.001f));
+        this.invalidPoints.forEach(p -> assertNotEquals(p.y, interpolator.getY(p.x), PRECISION));
     }
 
     private T getInterpolator() {
