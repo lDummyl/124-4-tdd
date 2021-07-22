@@ -4,14 +4,19 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class NewtonInterpolator implements Interpolator {
+    Scanner myScanner = new Scanner(System.in);
     List<Point> points = new ArrayList<>();
 
     public static void main(String[] args) {
-
+        NewtonInterpolator interpolator = new NewtonInterpolator();
+        interpolator.readPointsFromConsole();
+        interpolator.readXfromConsole();
     }
 
+    //остаточный член
     private float proterm(int i, float value, float[] x) {
         float pro = 1;
         for (int j = 0; j < i; j++) {
@@ -20,11 +25,11 @@ public class NewtonInterpolator implements Interpolator {
         return pro;
     }
 
+    //разделенные разности узлов с делением на шаг между узлами (h)
     private void dividedDiffTable(float[] x, float[][] y, int n) {
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < n - i; j++) {
-                y[j][i] = (y[j][i - 1] - y[j + 1]
-                        [i - 1]) / (x[j] - x[i + j]);
+                y[j][i] = (y[j][i - 1] - y[j + 1][i - 1]) / (x[j] - x[i + j]);
             }
         }
     }
@@ -63,11 +68,16 @@ public class NewtonInterpolator implements Interpolator {
         float[] xArr = new float[n];
 
         for (int i = 0; i < n; i++) {
-
-             xArr[i] = points.get(i).x;
+            xArr[i] = points.get(i).x;
             y[i][0] = points.get(i).y;
         }
 
+        for (int i = 0; i < xArr.length; i++) {
+            for (int j = i + 1; j < xArr.length; j++) {
+                if (xArr[i]==xArr[j])
+                    throw new IllegalArgumentException("Nodes cannot have equal x values");
+            }
+        }
         // calculating divided difference table
         dividedDiffTable(xArr, y, n);
         // displaying divided difference table
@@ -82,5 +92,34 @@ public class NewtonInterpolator implements Interpolator {
 
     }
 
+    private  void readXfromConsole() {
+        System.out.print("Enter the arbitrary value x for which you want the value y: ");
+        float x = myScanner.nextFloat();  //Store the value in x
+        float y = getY(x);
+        System.out.println("When x = " + x + "," + " y = " + y);
+    }
 
+    private void readPointsFromConsole() {
+        System.out.print("Enter the number of terms n: ");
+        int n = myScanner.nextInt(); //Store the value in n
+        if (n <= 0) throw new IllegalArgumentException("Can't do!");
+
+        for (int count = 0; count < n; count++) //Start the loop for X
+        {
+            System.out.println("Enter point #" + count);
+            System.out.print("Enter the value for x" + count + ": ");
+            float x = myScanner.nextFloat();
+
+            if (count != 0) {
+                for (Point point : points) {
+                    if (point.x == x)
+                        throw new IllegalArgumentException("Nodes cannot have equal x values");
+                }
+            }
+
+            System.out.print("Enter the value for y" + count + ": ");
+            float y = myScanner.nextFloat();
+            points.add(new Point(x, y));
+        }
+    }
 }
